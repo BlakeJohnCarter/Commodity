@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Multi Commodity Exchange India (Rupees)</h1>
+
+<table id="com-table">
+  <thead>
+    <tr>
+      <th>Commodity title</th>
+      <th>Commodity price (open)</th>
+      <th>Date|Open|High|Low|Close|volume|Open Interest</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stocks.each do |stock| %>
+      <tr>
+        <td><%= stock.stockname %></td>
+        <td><%= stock.stockprice %></td>
+        <td><%= stock.stocktime %></td>
+        <td><%= link_to 'Show', stock %></td>
+        <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
+        <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<br>
+
+<%= link_to 'Start Capture', new_stock_path %>
+
+<!--Ivline styling-->
+<style>
+  #com-table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  #com-table td, #com-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  #com-table tr:nth-child(even){background-color: #f2f2f2;}
+
+  #com-table tr:hover {background-color: #ddd;}
+
+  #com-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+</style>
